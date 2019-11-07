@@ -1,0 +1,18 @@
+<app-nav-bar></app-nav-bar>
+<div class="row ">
+    <div class="col-md-2 spacer">
+        <ul class="list-group">
+
+            <li class="list-group-item" style=" margin-bottom: 5px; height:50px;"><a class="nav-link" routerLink="/acceuil">Home</a></li>
+            <li class="list-group-item " style="margin-bottom: 5px; height:50px;"><a class="nav-link" routerLink="/maGallery">Ma Gallery</a> </li>
+            <li class="list-group-item" style="margin-bottom: 5px; height:50px;"><a class="nav-link" routerLink="/maMeteo">Ma Météo</a></li>
+            <li class="list-group-item " style=" margin-bottom: 5px; height:50px;"><a class="nav-link" routerLink="/about">About</a></li>
+
+        </ul>
+    </div>
+    <div class="col-md-10 spacer">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<app-footer></app-footer>

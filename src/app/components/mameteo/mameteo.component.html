@@ -1,0 +1,61 @@
+<div class="container " style="height: 900px;">
+  <div class="row">
+    <div class="card bg-dark text-white  cardRadius col-md-9">
+      <div class="card-body">
+        <form class="form-inline" #f="ngForm" (ngSubmit)="onGetMeteo(f.value)">
+          <label for="ville" class="lblRadius">Veuillez saisir La Ville :</label>
+          <input type="text" id="ville" autofocus class="form-control inputfield" name="ville" ngModel required />
+          <button type="submit" class="btn btn-primary btn-sm  btnRadius">Afficher </button>
+          <span *ngIf="messageError">&nbsp; &nbsp;{{messageError}}</span>
+        </form>
+      </div>
+    </div>
+    <div class="card bg-primary text-black col-md-9 spacerCard hauteur cardRadius" *ngIf="donnes && showPanel">
+      <div class="card-header">
+        <h5>Météo et climat Pour : {{donnes.name}} &nbsp;( {{ donnes.sys.country | uppercase}} ) Le :
+          {{donnes.dt * 1000 | date:'dd-MM-yyyy HH:MM:SS' }}</h5>
+        <div class="row">
+          <div class="col-md-4" style="text-align: left;">
+            <h5><strong>Longtitude : &nbsp;{{donnes.coord.lon}} </strong></h5>
+          </div>
+          <div class="col-md-4" style="text-align: right;">
+            <h5><strong>Latitude : &nbsp;{{donnes.coord.lat}} </strong></h5>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-5">
+            <h5>Déscription : <strong>{{donnes.weather[0].main}}</strong> </h5>
+            <h5>Humidité : <strong>{{donnes.main.humidity }}</strong> </h5>
+
+            <h5>Température Min : <strong>{{donnes.main.temp_min}} °C </strong></h5>
+            <h5>Température Max : <strong>{{donnes.main.temp_max}} °C </strong></h5>
+            <h5>Pression : <strong>{{donnes.main.pressure}}</strong></h5>
+            <h5>Vitesse du Vent : <strong>{{donnes.wind.speed}} </strong></h5>
+            <h5>Direction du Vent : <strong>{{donnes.wind.deg}}</strong></h5>
+
+          </div>
+          <div class="col-md-5">
+            <h5> <strong>{{donnes.weather[0].description}} </strong></h5>
+            <h6>Température Actuel :<strong> {{donnes.main.temp}} °C </strong></h6>
+            <img src="http://openweathermap.org/img/w/{{donnes.weather[0].icon}}.png" width="400" height="400" />
+
+          </div>
+
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-4">
+              <h5> Le Coucher du Soleil à : {{donnes.sys.sunset * 1000 | date:'HH:MM:SS' }}</h5>
+            </div>
+            <div class="col-md-4 ">
+              <h5 style="text-align: right">Lever du Soleil à : {{donnes.sys.sunrise * 1000 | date: 'HH:MM:SS'}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

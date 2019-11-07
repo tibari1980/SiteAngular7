@@ -1,0 +1,61 @@
+<div class="container" style="height: 2800px;">
+  <div class="row">
+    <!--debut row 1-->
+    <div class="card bg-dark text-white col-md-12 cardRadius">
+      <div class="card-body">
+        <form class="form-inline" #f="ngForm" (ngSubmit)="onSearch(f.value)">
+          <label class="lblRadius" for="motCle">mot Cle :</label>
+          <input type="text" class="inputfield" name="motCle" ngModel autofocus required />
+          <button type="submit" class="btn btn-primary btn-sm btnRadius">Chercher</button>
+
+        </form>
+      </div>
+      <!--fin body-->
+    </div>
+    <!--fin card bg dark-->
+  </div>
+  <!--fin row 1-->
+
+  <div class="row" *ngIf="showPanelData">
+    <!--debut second row -->
+    <div style="margin-left:90px;" class="card bg-primary text-black col-md-5 hauteur spacerCard sizeFont"
+      *ngFor="let im of images?.hits">
+      <div class="card-header">
+        <strong style=" font-size:18px;"> <span class="fa fa-camera"> {{im.tags | uppercase}}</span></strong>
+      </div>
+      <!--fin div card header-->
+      <div class="card-body">
+        <!--debut card body-->
+        <p style="text-align: left;margin-left:-5%;font-size: 16px;"><strong>Large: {{im.imageWidth}} Hauteur :
+            {{im.imageHeight}}</strong></p>
+        <img src="{{im.previewURL}}" class="rounded-circle " style="text-align: center;" alt="{{im.tags}}" width="340"
+          height="250">
+        <p style="text-align: left;margin-left:-5%;font-size: 14px;" class="fa fa-user" style="font-size: 16px;">
+          {{im.user|uppercase}}<br><span class="far fa-thumbs-up" style="font-size: 16px;">{{im.likes}}</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span style="font-size: 14px;background-color:white;">Détails Photos:</span>
+        </p>
+      </div>
+      <!--fin body>-->
+
+    </div>
+    <!--fin card primary-->
+
+      <div style="width: 1050px;background-color: yellow;margin-left: 90px;">
+        <ul class="pagination pagination-sm">
+         <li [ngClass]="{'page-item active': pageCourante==(i+1)}" *ngFor="let p of nombrePages;let i=index">
+          <p>
+          <a class="page-link clikable" (click)="goToPage(i+1,motCle)">
+             {{i+1}}
+           </a>
+          </p>
+         </li>
+       </ul>
+     </div>
+
+  </div>
+  <!--fin second row-->
+
+
+</div>
+<!--fin container-->

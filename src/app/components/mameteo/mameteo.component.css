@@ -1,0 +1,38 @@
+.spacerCard{
+    margin-top: 10px;
+}
+
+.hauteur{
+    height: 750px;
+    width: 50px;
+    
+    margin:5px 5px 5px 5px;
+}
+.inputfield
+ {  
+   
+ color :black ; 
+ width:400px;  
+ height: 40px;
+ border-radius: 20px;   
+ }
+ .btnRadius{
+  
+ height: 40px;
+ border-radius: 20px;
+ background-color: blue;  
+ }
+ .lblRadius{
+ background-color: blue; 
+ height: 40px;
+ border-radius: 20px;
+  width:250px; 
+  float: right;  
+ }
+
+ .cardRadius{
+ border-radius: 30px;
+ font-style: italic;
+ font-family: 'Times New Roman', Times, serif;
+  
+ }
